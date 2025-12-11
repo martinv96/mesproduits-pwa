@@ -21,7 +21,24 @@ document.addEventListener('DOMContentLoaded', () => {
 // ========== GESTION DES PRODUITS ========== 
 function loadProducts() { 
     const stored = localStorage.getItem('products'); 
-    products = stored ? JSON.parse(stored) : []; 
+    if (stored) {
+        try {
+            const parsed = JSON.parse(stored);
+            // Nettoyer les produits invalides
+            products = parsed.filter(p => p.name && p.price !== undefined);
+            
+            // Si des produits ont été supprimés, sauvegarder la version nettoyée
+            if (products.length !== parsed.length) {
+                console.log(`${parsed.length - products.length} produits invalides supprimés`);
+                saveProducts();
+            }
+        } catch (e) {
+            console.error('Erreur de chargement des produits:', e);
+            products = [];
+        }
+    } else {
+        products = [];
+    }
 } 
  
 function saveProducts() { 
@@ -53,6 +70,9 @@ function displayProducts(filter = 'all') {
         ? products  
         : products.filter(p => p.category === filter); 
      
+    console.log('Affichage des produits:', filtered.length, 'produits');
+    console.log('Produits filtrés:', filtered);
+    
     productCount.textContent = filtered.length; 
      
     if (filtered.length === 0) { 
@@ -60,16 +80,26 @@ function displayProducts(filter = 'all') {
         return; 
     } 
      
-    productsList.innerHTML = filtered.map(product => ` 
-        <div class="product-card" data-id="${product.id}"> 
-            <div class="product-info"> 
-                <h3>${product.name}</h3> 
-                <div class="product-price">${product.price.toFixed(2)} €</div> 
-                <span class="product-category">${product.category}</span> 
-            </div> 
-            <button class="btn-delete" onclick="deleteProduct(${product.id})">🗑 Supprimer</button> 
-        </div> 
-    `).join(''); 
+    productsList.innerHTML = filtered.map(product => {
+        // Vérifier que le produit a toutes les propriétés nécessaires
+        if (!product.name || product.price === undefined) {
+            console.warn('Produit invalide ignoré:', product);
+            return '';
+        }
+        
+        return `
+            <div class="product-card" data-id="${product.id}">
+                <div class="product-info">
+                    <h3>${product.name}</h3>
+                    <div class="product-price">${Number(product.price).toFixed(2)} €</div>
+                    <span class="product-category">${product.category || 'Non catégorisé'}</span>
+                </div>
+                <button class="btn-delete" onclick="deleteProduct(${product.id})">🗑 Supprimer</button>
+            </div>
+        `;
+    }).filter(html => html !== '').join(''); 
+    
+    console.log('HTML généré, nombre de cartes:', document.querySelectorAll('.product-card').length);
 } 
  
 // ========== EVENT LISTENERS ========== 

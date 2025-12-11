@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "name": "Smartphone Galaxy Pro",
+    "price": 799.99,
+    "category": "Électronique",
+    "createdAt": "2025-12-11T10:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "name": "Ordinateur Portable UltraBook",
+    "price": 1299.99,
+    "category": "Informatique",
+    "createdAt": "2025-12-11T10:05:00.000Z"
+  },
+  {
+    "id": 3,
+    "name": "Casque Audio Sans Fil",
+    "price": 249.99,
+    "category": "Audio",
+    "createdAt": "2025-12-11T10:10:00.000Z"
+  },
+  {
+    "id": 4,
+    "name": "Montre Connectée Sport",
+    "price": 349.99,
+    "category": "Accessoires",
+    "createdAt": "2025-12-11T10:15:00.000Z"
+  },
+  {
+    "id": 5,
+    "name": "Tablette GraphiTab",
+    "price": 549.99,
+    "category": "Électronique",
+    "createdAt": "2025-12-11T10:20:00.000Z"
+  },
+  {
+    "id": 6,
+    "name": "Clavier Mécanique RGB",
+    "price": 159.99,
+    "category": "Périphériques",
+    "createdAt": "2025-12-11T10:25:00.000Z"
+  },
+  {
+    "id": 7,
+    "name": "Souris Gaming Pro",
+    "price": 89.99,
+    "category": "Périphériques",
+    "createdAt": "2025-12-11T10:30:00.000Z"
+  },
+  {
+    "id": 8,
+    "name": "Écran 4K UltraHD",
+    "price": 449.99,
+    "category": "Informatique",
+    "createdAt": "2025-12-11T10:35:00.000Z"
+  },
+  {
+    "id": 9,
+    "name": "Webcam Full HD",
+    "price": 129.99,
+    "category": "Périphériques",
+    "createdAt": "2025-12-11T10:40:00.000Z"
+  },
+  {
+    "id": 10,
+    "name": "Disque Dur Externe 2TB",
+    "price": 89.99,
+    "category": "Stockage",
+    "createdAt": "2025-12-11T10:45:00.000Z"
+  },
+  {
+    "id": 11,
+    "name": "Enceinte Bluetooth Portable",
+    "price": 79.99,
+    "category": "Audio",
+    "createdAt": "2025-12-11T10:50:00.000Z"
+  },
+  {
+    "id": 12,
+    "name": "Chargeur Sans Fil Rapide",
+    "price": 39.99,
+    "category": "Accessoires",
+    "createdAt": "2025-12-11T10:55:00.000Z"
+  }
+]
