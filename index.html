@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, 
+initial-scale=1.0"
+    />
+    <meta name="theme-color" content="#2196F3" />
+    <meta
+      name="description"
+      content="Gérez votre catalogue de produits 
+hors ligne"
+    />
+
+    <!-- iOS Support -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="MesProduits" />
+
+    <title>MesProduits - Catalogue PWA</title>
+    <link rel="apple-touch-icon" href="icon-192x192.png" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.json" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header>
+        <h1>📦 MesProduits</h1>
+        <div class="header-buttons">
+          <button id="installBtn" class="btn-install" hidden>
+            ⬇ Installer l'app
+          </button>
+          <button id="themeToggle" class="btn-theme" title="Basculer le thème">🌙</button>
+        </div>
+      </header>
+
+      <!-- Formulaire d'ajout -->
+      <section class="add-section">
+        <h2>Ajouter un produit</h2>
+        <form id="productForm">
+          <input
+            type="text"
+            id="productName"
+            placeholder="Nom du 
+produit"
+            required
+          />
+          <input
+            type="number"
+            id="productPrice"
+            placeholder="Prix 
+(€)"
+            step="0.01"
+            required
+          />
+          <select id="productCategory" aria-label="Sélectionner une catégorie" required>
+            <option value="">-- Catégorie --</option>
+            <option value="Électronique">Électronique</option>
+            <option value="Vêtements">Vêtements</option>
+            <option value="Alimentation">Alimentation</option>
+            <option value="Maison">Maison</option>
+          </select>
+          <button type="submit" class="btn-primary">Ajouter</button>
+        </form>
+      </section>
+
+      <!-- Filtres et Recherche -->
+      <section class="filter-section">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="🔍 Rechercher un produit..."
+          style="width: 100%; padding: 0.8rem; margin-bottom: 1rem; border: 2px solid #ddd; border-radius: 0.5rem; font-size: 1rem;"
+        />
+        <select id="filterCategory" aria-label="Filtrer par catégorie">
+          <option value="all">Toutes catégories</option>
+          <option value="Électronique">Électronique</option>
+          <option value="Vêtements">Vêtements</option>
+          <option value="Alimentation">Alimentation</option>
+          <option value="Maison">Maison</option>
+        </select>
+      </section>
+
+      <!-- Liste des produits -->
+      <section class="products-section">
+        <h2>Mon catalogue (<span id="productCount">0</span>)</h2>
+        <div id="productsList"></div>
+      </section>
+
+      <!-- Export/Import -->
+      <section class="actions-section">
+        <h2>Actions</h2>
+        <div class="button-group">
+          <button onclick="exportProducts()" class="btn-secondary">📥 Exporter en JSON</button>
+          <button onclick="document.getElementById('importFile').click()" class="btn-secondary">📤 Importer JSON</button>
+          <input type="file" id="importFile" accept=".json" hidden />
+        </div>
+      </section>
+      <!-- Indicateur de statut -->
+      <footer>
+        <div id="statusIndicator" class="status online">
+          <span class="status-dot"></span>
+          <span id="statusText">En ligne</span>
+        </div>
+      </footer>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
